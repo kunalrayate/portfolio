@@ -1,0 +1,144 @@
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#home">{{ profile.initials }}<span>.</span></a>
+    <nav [class.open]="menuOpen()" aria-label="Sections">
+      @for (n of nav; track n) {
+        <a [href]="'#' + n" [class.on]="active() === n" (click)="menuOpen.set(false)">{{ n[0].toUpperCase() + n.slice(1) }}</a>
+      }
+    </nav>
+    <div class="actions">
+      <button class="ghost" (click)="toggleTheme()" [attr.aria-label]="'Switch to ' + (theme() === 'dark' ? 'light' : 'dark') + ' theme'">{{ theme() === 'dark' ? 'Light' : 'Dark' }}</button>
+      <button class="ghost burger" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()">Menu</button>
+    </div>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hello">Hello, I'm</p>
+      <h1>{{ profile.name }}</h1>
+      <p class="role">{{ profile.title }}</p>
+      <p class="tag">{{ profile.tagline }}</p>
+      <div class="btns">
+        <a class="btn primary" href="#projects">View my projects</a>
+        <a class="btn light" [href]="profile.resume" download>Download resume</a>
+      </div>
+      <div class="social">
+        <a [href]="profile.github" target="_blank" rel="noopener">GitHub</a>
+        <a [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a [href]="'mailto:' + profile.email">Email</a>
+      </div>
+    </div>
+    <div class="portrait">
+      @if (profile.photo) { <img [src]="profile.photo" [alt]="'Photo of ' + profile.name" width="260" height="260"> }
+      @else { <div class="initials" aria-hidden="true">{{ profile.initials }}</div> }
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="head"><h2>About me</h2><p>Who I am and what I am looking for.</p></div>
+    <div class="two">
+      <div>@for (p of profile.about; track p) { <p class="body">{{ p }}</p> }</div>
+      <div class="stats">@for (s of profile.stats; track s.l) { <div><b>{{ s.v }}</b><span>{{ s.l }}</span></div> }</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="head"><h2>Skills</h2><p>Technologies and tools I work with.</p></div>
+    <div class="grid3">
+      @for (g of skills; track g.group) {
+        <div class="card"><h3>{{ g.group }}</h3><div class="chips">@for (i of g.items; track i) { <span>{{ i }}</span> }</div></div>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="head"><h2>Internship</h2><p>Where I applied what I learned.</p></div>
+    @for (e of experience; track e.role) {
+      <div class="card big">
+        <div class="row"><h3>{{ e.role }}</h3><small>{{ e.when }}</small></div>
+        <p class="org">{{ e.company }}</p>
+        <ul>@for (p of e.points; track p) { <li>{{ p }}</li> }</ul>
+        <div class="chips">@for (t of e.tools; track t) { <span>{{ t }}</span> }</div>
+      </div>
+    }
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="head"><h2>Projects</h2><p>Three end-to-end applications, with source code on GitHub.</p></div>
+    <div class="projects">
+      @for (p of projects; track p.name) {
+        <article class="card proj">
+          <small class="kind">{{ p.kind }}</small>
+          <h3>{{ p.name }}</h3>
+          <p class="sum">{{ p.summary }}</p>
+          <ul>@for (h of p.highlights; track h) { <li>{{ h }}</li> }</ul>
+          <div class="chips">@for (t of p.tech; track t) { <span>{{ t }}</span> }</div>
+          <div class="links">
+            <a class="btn small primary" [href]="p.code" target="_blank" rel="noopener">Source code</a>
+            @if (p.demo) { <a class="btn small" [href]="p.demo" target="_blank" rel="noopener">Live demo</a> }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="head"><h2>Education</h2><p>What I have studied so far.</p></div>
+    <div class="timeline">
+      @for (e of education; track e.degree) {
+        <div class="entry"><h3>{{ e.degree }}</h3><p>{{ e.place }}</p><small>{{ e.when }} · {{ e.note }}</small></div>
+      }
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="alt">
+  <div class="wrap">
+    <div class="head"><h2>Certifications</h2><p>Training and internship credentials.</p></div>
+    <div class="grid2">
+      @for (c of certs; track c.name) {
+        <div class="card"><h3>{{ c.name }}</h3><p class="org">{{ c.issuer }}</p><small>{{ c.when }}</small></div>
+      }
+    </div>
+    <div class="resume-box">
+      <div><h3>Want the full details?</h3><p>Download my resume as a PDF.</p></div>
+      <a class="btn primary" [href]="profile.resume" download>Download resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="head"><h2>Contact me</h2><p>I am open to Java and full stack developer roles.</p></div>
+    <div class="two">
+      <ul class="info">
+        <li><span>Email</span><a [href]="'mailto:' + profile.email">{{ profile.email }}</a></li>
+        <li><span>Phone</span><a [href]="'tel:' + profile.phone.replace(' ', '')">{{ profile.phone }}</a></li>
+        <li><span>Location</span>{{ profile.location }}</li>
+        <li><span>LinkedIn</span><a [href]="profile.linkedin" target="_blank" rel="noopener">{{ profile.linkedin.replace('https://', '') }}</a></li>
+        <li><span>GitHub</span><a [href]="profile.github" target="_blank" rel="noopener">{{ profile.github.replace('https://', '') }}</a></li>
+      </ul>
+      <form (ngSubmit)="send()" #f="ngForm">
+        <label>Name<input name="name" [(ngModel)]="form.name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" [(ngModel)]="form.email" required email autocomplete="email"></label>
+        <label>Message<textarea name="message" [(ngModel)]="form.message" required></textarea></label>
+        <button class="btn primary" type="submit" [disabled]="f.invalid">Send message</button>
+        <p class="note">{{ note() }}</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© {{ year }} {{ profile.name }}</div></footer>
