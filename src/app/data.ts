@@ -8,6 +8,7 @@ export const PROFILE = {
   location: 'Antapur, Maharashtra, India',
   github: 'https://github.com/kunalrayate',
   linkedin: 'https://linkedin.com/in/kunal-rayate',
+  hackerrank : 'https://hackerrank.com/profile/kunalrayate',
   photo: '/myphoto.jpeg',
   resume: 'resume.pdf',
   about: [
@@ -23,13 +24,13 @@ export const PROFILE = {
 };
 
 export const SKILLS: { group: string; items: string[] }[] = [
-  { group: 'Languages', items: ['Java', 'Python', 'SQL', 'JavaScript'] },
+  { group: 'Languages', items: ['Java', 'SQL', 'JavaScript'] },
   { group: 'Backend & Frameworks', items: ['Spring Boot', 'Spring MVC', 'Spring Security', 'JWT', 'Hibernate', 'JPA', 'REST APIs', 'JDBC'] },
   { group: 'Frontend', items: ['Angular', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'] },
-  { group: 'Databases', items: ['MySQL', 'PostgreSQL', 'SQL'] },
+  { group: 'Databases', items: ['MySQL', 'PostgreSQL'] },
   { group: 'AI & Emerging Tech', items: ['Spring AI', 'Large Language Models (LLMs)', 'AI Integration'] },
   { group: 'CS Fundamentals', items: ['OOP', 'Data Structures & Algorithms', 'Dynamic Programming'] },
-  { group: 'Tools', items: ['Git', 'GitHub', 'Maven', 'Postman', 'IntelliJ IDEA', 'Eclipse', 'VS Code', 'PyCharm', 'Jira'] },
+  { group: 'Tools', items: ['Git', 'GitHub', 'Maven', 'Postman', 'IntelliJ IDEA', 'Eclipse', 'VS Code', 'Jira', 'Vercel' , 'Render'] },
   { group: 'Soft Skills', items: ['Problem Solving', 'Leadership', 'Project Management', 'Teamwork'] }
 ];
 
@@ -90,11 +91,13 @@ export const PROJECTS: Project[] = [
 export const EDUCATION = [
   { degree: 'Master of Computer Application (MCA)', place: 'Vishwakarma University, Pune', when: '2025 – 2027', note: 'Pursuing' },
   { degree: 'Bachelor of Computer Science', place: 'Savitribai Phule Pune University, Pune', when: '2021 – 2024', note: 'Percentage: 71.1%' },
-  { degree: 'Higher Secondary Education (HSC)', place: 'Maharashtra Higher Secondary School, Taharabad', when: '2019 – 2021', note: 'Percentage: 65.17%' },
-  { degree: 'Secondary Education (SSC)', place: 'Maharashtra Secondary School, Antapur', when: '2018 – 2021', note: 'Percentage: 64%' }
+  { degree: 'Higher Secondary Education (HSC)', place: 'Maharashtra Higher Secondary School, Taharabad', when: '2020 – 2021', note: 'Percentage: 65.17%' },
+  { degree: 'Secondary Education (SSC)', place: 'Maharashtra Secondary School, Antapur', when: '2019', note: 'Percentage: 64%' }
 ];
 
 export const CERTIFICATIONS = [
   { name: 'Full Stack Developer', issuer: 'The Kiran Academy, Pune', when: 'Jul 2024 – Dec 2024' },
-  { name: 'Internship Certification', issuer: 'Kiran Academy, Pune', when: 'Nov 2024 – May 2025' }
+  { name: 'Internship Certification', issuer: 'Kiran Academy, Pune', when: 'Nov 2024 – May 2025' },
+  { name: 'HackerRank Certification', issuer: 'HackerRank', when: '2026' }
+
 ];
