@@ -27,6 +27,7 @@
       <div class="social">
         <a [href]="profile.github" target="_blank" rel="noopener">GitHub</a>
         <a [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a [href]="profile.hackerrank" target="_blank" rel="noopener">HackerRank</a>
         <a [href]="'mailto:' + profile.email">Email</a>
       </div>
     </div>
@@ -128,6 +129,7 @@
         <li><span>Phone</span><a [href]="'tel:' + profile.phone.replace(' ', '')">{{ profile.phone }}</a></li>
         <li><span>Location</span>{{ profile.location }}</li>
         <li><span>LinkedIn</span><a [href]="profile.linkedin" target="_blank" rel="noopener">{{ profile.linkedin.replace('https://', '') }}</a></li>
+        <li><span>HackerRank</span><a [href]="profile.hackerrank" target="_blank" rel="noopener">{{profile.hackerrank.replace('https://', '') }}</a></li>
         <li><span>GitHub</span><a [href]="profile.github" target="_blank" rel="noopener">{{ profile.github.replace('https://', '') }}</a></li>
       </ul>
       <form (ngSubmit)="send()" #f="ngForm">
